@@ -74,7 +74,7 @@
                               <div class="aggregate-stat">
                                    <img src="./images/density.png">
                                    <p>Tree Density</p>
-                                   <p class="bold">1800 trees/hectare</p>
+                                   <p class="bold">1,800 trees/hectare</p>
                               </div>
                               <div class="aggregate-stat">
                                    <img src="./images/health.png">
@@ -104,7 +104,7 @@
                <div class="csv-preview-container">
                     <h2 class="mini-title">Dataset</h2>
 
-                    Preview the full site dataset below or <a href="combined_hectare.csv">download the CSV</a>.
+                    Preview the full site dataset below or <a id="csv-download" href="combined_hectare.csv">download the CSV</a>.
 
                     <br>
                     <br>
@@ -125,7 +125,7 @@
                               <thead id="table-head">
                                    <tr>
                                         <th>tile_id</th>
-                                        <th>avg_vegindex</th>
+                                        <th>avg_vegetation</th>
                                         <th>avg_height</th>
                                         <th>min_height</th>
                                         <th>max_height</th>
@@ -249,7 +249,7 @@
                               <thead id="table-head">
                                    <tr>
                                         <th>tile_id</th>
-                                        <th>avg_vegindex</th>
+                                        <th>avg_vegetation</th>
                                         <th>avg_height</th>
                                         <th>min_height</th>
                                         <th>max_height</th>
@@ -373,7 +373,7 @@
                               <thead id="table-head">
                                    <tr>
                                         <th>tile_id</th>
-                                        <th>avg_vegindex</th>
+                                        <th>avg_vegetation</th>
                                         <th>avg_height</th>
                                         <th>min_height</th>
                                         <th>max_height</th>
@@ -507,11 +507,13 @@
      const switchTable = () => {
           const tableSelector = document.getElementById("table-selector");
           const selectedTableId = tableSelector.value;
+          const selectedhref = csv_download.href;
 
           const hectare = document.getElementById("treefera-data-hectare");
           const acre = document.getElementById("treefera-data-acre");
           const quarter = document.getElementById("treefera-data-quarter");
-
+          
+          const csv_download = document.getElementById("csv-download");
           // Images
 
           const h0 = document.getElementById("0");
@@ -569,8 +571,14 @@
           q4.style.display = selectedTableId === "quarter" ? "table" : "none";
           q5.style.display = selectedTableId === "quarter" ? "table" : "none";
           q6.style.display = selectedTableId === "quarter" ? "table" : "none";
-
-
+          
+          if (selectedTableId === "hectare") {
+               csv_download.href="combined_hectare.csv";
+          } else if (selectedTableId === "acre") {
+               csv_download.href="combined_acre.csv";
+          } else if (selectedTableId === "quarter") {
+               csv_download.href="combined_quarter_hectare.csv";
+          }
      };
 
      const tableSelector = document.getElementById("table-selector");
