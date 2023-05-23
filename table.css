@@ -1,0 +1,43 @@
+.table-display {
+    table-layout: fixed;
+    overflow-y: auto;
+    overflow-x: auto;
+    max-height: 400px;
+    margin-top: 20px;
+    border-top: 1px #eeeeee solid;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: white;
+}
+
+.histo-img {
+    width: 100px;
+    height: 70px;
+    padding: 1px;
+    border: 1px #eeeeee solid;
+    filter: saturate(62%) hue-rotate(305deg);
+}
+
+#table-head {
+    height: 40px;
+}
+
+table th {
+    text-align: center;
+    font-weight: 500;
+    font-size: 10pt;
+    padding: 15px 15px 5px 15px;
+}
+
+table tr td {
+    border: none;
+    white-space: nowrap;
+    text-align: center;
+    padding: 15px 6px;
+    vertical-align: middle;
+    font-size: 9pt;
+    border-bottom: 1px #eeeeee solid;
+}

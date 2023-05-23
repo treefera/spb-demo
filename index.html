@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
@@ -7,197 +7,571 @@
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@400;500;600;700;800&display=swap"
           rel="stylesheet">
+     <meta charset="utf-8">
 
+     <link rel="stylesheet" href="style.css" />
+     <link rel="stylesheet" href="table.css" />
+     <title>SPB Equipment | Data Delivery </title>
 
-     <script type='module'
-          src='https://prod-uk-a.online.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js'></script>
-
-     <link rel="stylesheet" href="styles.css" />
-
-     <title>SPB Equipment | Data Product Delivery </title>
 </head>
 
-<body onload="pageLoadHandler()">
-
-     <script>
-
-          let hec = true;
-
-          const vizInfo = {
-               "Height_Average_HEC_Dash": ["Average Tree Height Per Hectare", "Approximate foliage height above ground level, with mean taken over 1 hectare tiles.", "Average foliage height is approximate and may be influenced by the presence of other (non-natural) objects. Height is derived from the NEXTMap Digital Terrain Model and NEXTMap Digital Surface Model at 10 x 10 m resolution and averaged to 1-hectare resolution.", "average-height-button", "https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Height_Average_HEC_Dash"],
-
-               "Height_Min_HEC_Dash": ["Minimum Tree Height Per Hectare", "Approximate foliage height above ground level, with minimum taken over 1 hectare tiles.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis sem massa. Mauris rutrum dapibus mauris, vel sodales quam condimentum in. In vulputate eu mi vel sagittis. Praesent tempor leo non condimentum accumsan.", "minimum-height-button", "https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Height_Min_HEC_Dash"],
-
-               "Height_Max_HEC_Dash": ["Maximum Tree Height Per Hectare", "Approximate foliage height above ground level, with maximum taken over 1 hectare tiles.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis sem massa. Mauris rutrum dapibus mauris, vel sodales quam condimentum in. In vulputate eu mi vel sagittis. Praesent tempor leo non condimentum accumsan.", "maximum-height-button", "https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Height_Max_HEC_Dash"],
-
-               "Species_HEC_Dash": ["Tree Species Description Per Hectare", "Tree species classification for each 1 hectare tile.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis sem massa. Mauris rutrum dapibus mauris, vel sodales quam condimentum in. In vulputate eu mi vel sagittis. Praesent tempor leo non condimentum accumsan.", "species-button", "https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Species_HEC_Dash"],
-
-               "Density_HEC_Dash": ["Tree Density Per Hectare", "Tree density classification for each 1 hectare tile.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis sem massa. Mauris rutrum dapibus mauris, vel sodales quam condimentum in. In vulputate eu mi vel sagittis. Praesent tempor leo non condimentum accumsan.", "density-button", "https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Density_HEC_Dash"],
-
-               "NDVI_HEC_Dash": ["Average Vegetation Index Per Hectare", "Vegetation index, with mean taken over 1 hectare tiles.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis sem massa. Mauris rutrum dapibus mauris, vel sodales quam condimentum in. In vulputate eu mi vel sagittis. Praesent tempor leo non condimentum accumsan.", "vegetation-button", "https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/NDVI_HEC_Dash"],
-
-               "Biomass_HEC_Dash": ["Tree Biomass Per Hectare (Experimental)", "Total biomass of trees in 1 hectare tiles.", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis sem massa. Mauris rutrum dapibus mauris, vel sodales quam condimentum in. In vulputate eu mi vel sagittis. Praesent tempor leo non condimentum accumsan.", "biomass-button", "https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Biomass_HEC_Dash"],
-          };
-
-          function loadViz(vizName) {
-
-               const vizArray = vizInfo[vizName];
-
-               if (hec) {
-                    document.getElementById("tableau-viz").src = vizArray[4];
-                    document.getElementById("viz-name").textContent = vizArray[0];
-               }
-               else {
-                    document.getElementById("tableau-viz").src = vizArray[4].replace("HEC", "QUA");
-                    document.getElementById("viz-name").textContent = vizArray[0].replace("Hectare", "Quarter-Hectare");
-               }
-
-               document.getElementById("viz-description").textContent = vizArray[1];
-               document.getElementById("viz-about").textContent = vizArray[2];
-
-               const activeButtonList = document.getElementsByClassName("active");
-
-               if (activeButtonList.length !== 0) {
-                    activeButtonList[0].className = '';
-               }
-
-               document.getElementById(vizArray[3]).className = 'active';
-
-          }
-
-          function changeRes() {
-               if (hec) {
-                    hec = false;
-                    document.getElementById("tableau-viz").src = document.getElementById("tableau-viz").src.replace("HEC", "QUA");
-                    document.getElementById("viz-name").textContent = document.getElementById("viz-name").textContent.replace("Hectare", "Quarter-Hectare");
-               }
-               else {
-                    hec = true;
-                    document.getElementById("tableau-viz").src = document.getElementById("tableau-viz").src.replace("QUA", "HEC");
-                    document.getElementById("viz-name").textContent = document.getElementById("viz-name").textContent.replace("Quarter-Hectare", "Hectare");
-               }
-
-          }
-
-          function pageLoadHandler() {
-               loadViz("Height_Average_HEC_Dash");
-          }
-     </script>
-
-     <div class="navbar">
-          <img class="brand-logo" src="logo.webp">
-          <p class="navbar-title">SPB Equipment | Data Product Delivery</p>
-     </div>
-
+<body>
      <div class="body-container">
+          <div class="navbar">
+               <div class="brand-logo-container">
+                    <a href="https://www.treefera.com/"><img class="brand-logo" src="logo.webp"></a>
+               </div>
+               <p class="navbar-title">SPB Equipment | Data Delivery </p>
+          </div>
+          <div class="content-container">
+               <p class="eye-grabber">Hi Elliott. Your data for <span class="bold">Quebec, Eastern Canada</span> is
+                    ready.
+               </p>
+               <p class="top-title">Site Report</p>
+               <p><img src="./images/pin.png"
+                         style="vertical-align: middle; width: 25px; height: 25px; margin-right: 2px"> Quebec,
+                    <span style="margin-right: 4px" class="bold">Canada</span> | <span style="margin-left: 4px"
+                         class="small">Last updated: 2023-05-21</span>
+               </p>
+               <div class="site-info-container">
+                    <div class="stat-container">
+                         <img src="./images/property_details.png">
+                         <p><span class="bold">Site Area:</span> 418 acres / 169 hectares</p>
+                    </div>
+                    <div class="stat-container">
+                         <img src="./images/blob_details.png">
+                         <p style="margin-right: 15px"><span class="bold">Image Source:</span> Airbus</p>
 
-          <p class="eye-grabber">Hi Elliott. Your data for <span class="bold">Quebec, Eastern Canada</span> is ready.
-          </p>
+                         <img src="./images/blob_details.png">
+                         <p><span class="bold">Image Date:</span> 8th October 2021</p>
+                    </div>
+                    <div class="stat-container">
+                         <img src="./images/blob_details.png">
+                         <p><span class="bold">AI Reference:</span> LCM / RetinaNet</p>
+                    </div>
+               </div>
+               <div class="map-view-link" onclick="location.href='data.html'">
+                    <img class="map-view-symbol" src="./images/latlong.png">
+                    <p>
+                         <span class="bold"> Detailed Site View</span>
+                         <br>
+                         Latitude: 46.855424, Longitude: -75.365153
+                    </p>
+                    <img class="map-view-chevron" src="images/cheveron.png"></img>
+               </div>
+               <div class="aggregate-statistics-big-container">
 
-          <p class="eye-grabber-tagline">Explore below and gain insights from tree species, height, density and more.
-          </p>
+                    <p class="mini-title">Site Summary</p>
+                    <div class="aggregate-statistics-container">
+                         <div class="aggregate-statistics-section">
+                              <div class="aggregate-stat">
+                                   <img class="agg-imgs" src="./images/biomass.png">
 
-          <div class="viz-container">
+                                   <p>Total Biomass (Experimental)</p>
+                                   <p class="bold">9212007 t</p>
+                              </div>
+                              <div class="aggregate-stat">
+                                   <img src="./images/density.png">
+                                   <p class="spaced-stat">Tree Density</p>
+                                   <p class="bold">16904033 units*</p>
+                              </div>
+                              <div class="aggregate-stat">
+                                   <img src="./images/health.png">
 
-               <tableau-viz id='tableau-viz' width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
+                                   <p class="spaced-stat">Tree Health</p>
+                                   <p class="bold">3930500 units**</p>
+                              </div>
+                              <div class="aggregate-stat">
+                                   <img src="./images/count.png">
 
-               <div class="viz-info-container">
-                    <p id="viz-name" class="viz-info-text verybold">Loading...</p>
-                    <p id="viz-description" class="viz-info-text">Loading...</p>
-                    <br>
-                    <p class="viz-info-text"><span class="bold">Explore The Data</span></p>
-                    <p class="viz-info-text">Hover a tile for more information. Use the scroll wheel to zoom the map.
-                         Click and drag to pan the map.</p>
-                    <p class="viz-info-text"><span class="italic">Your property is higlighted in white.</span></p>
-                    <br>
-                    <p class="viz-info-text"><span class="bold">About The Data</span></p>
-                    <p id="viz-about" class="viz-info-text small">Loading...</p>
+                                   <p class="spaced-stat">Total Tree Count</p>
+                                   <p class="aggregate-soon">Coming Soon!</p>
+                              </div>
+                              <div class="aggregate-stat">
+                                   <img src="./images/CO2.png">
 
-                    <br>
-
-                    <div class="see-more-container">
-
-                         <p class="viz-info-text" style="margin-bottom: 20px"><span class="bold">See More</span></p>
-
-                         <div class="button-collection">
-                              <a id="average-height-button" href="#"
-                                   onclick="loadViz('Height_Average_HEC_Dash'); event.preventDefault();">Average
-                                   Height</a>
-                              <a id="minimum-height-button" href="#"
-                                   onclick="loadViz('Height_Min_HEC_Dash'); event.preventDefault();">Minimum Height</a>
-                              <a id="maximum-height-button" href="#"
-                                   onclick="loadViz('Height_Max_HEC_Dash'); event.preventDefault();">Maximum Height</a>
+                                   <p>Annual Carbon Captured</p>
+                                   <p class="aggregate-soon">Coming Soon!</p>
+                              </div>
                          </div>
-                         <div class="button-collection">
-                              <a id="species-button" href="#"
-                                   onclick="loadViz('Species_HEC_Dash'); event.preventDefault();">Species</a>
-                              <a id="density-button" href="#"
-                                   onclick="loadViz('Density_HEC_Dash'); event.preventDefault();">Density</a>
-                              <a id="vegetation-button" href="#"
-                                   onclick="loadViz('NDVI_HEC_Dash'); event.preventDefault();">Vegetation Index</a>
-                              <a id="biomass-button" href="#"
-                                   onclick="loadViz('Biomass_HEC_Dash'); event.preventDefault();">Biomass</a>
+                         <div class="asterisk-container">
+                              <p>* Lorem ipsum lorem ipsum</p>
+                              <p>** Lorem ipsum lorem ipsum</p>
                          </div>
+                    </div>
+               </div>
+               <div class="csv-preview-container">
+                    <h2 class="mini-title">Tile Data</h2>
 
-                         <div class="res-button-container">
-                              <a id="change-res-button" href="#" onclick="changeRes(); event.preventDefault();">Change
-                                   Resolution</a>
-                         </div>
+                    Preview the full site dataset below or <a href="data.html">download the CSV</a>.
+
+                    <br>
+                    <br>
+                    <div class="selector-container">
+
+                         <p>Tile Size:</p>
+
+                         <select id="table-selector">
+                              <option value="hectare">Hectare</option>
+                              <option value="quarter">Quarter-Hectare</option>
+                              <option value="acre">Acre</option>
+                         </select>
+
+                    </div>
+
+                    <div class="table-display">
+                         <table id="treefera-data-hectare" style="display: table;" class="dataframe">
+                              <thead id="table-head">
+                                   <tr>
+                                        <th>tile_id</th>
+                                        <th>avg_ndvi</th>
+                                        <th>avg_height</th>
+                                        <th>min_height</th>
+                                        <th>max_height</th>
+                                        <th>avg_species</th>
+                                        <th>avg_density</th>
+                                        <th>avg_biomass</th>
+                                   </tr>
+                              </thead>
+                              <tbody>
+                                   <tr>
+                                        <td></td>
+                                        <td><img id="0" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/hectare_avg_ndvi.png"></td>
+                                        <td><img id="1" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/hectare_avg_height.png"></td>
+                                        <td><img id="2" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/hectare_min_height.png"></td>
+                                        <td><img id="3" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/hectare_max_height.png"></td>
+                                        <td><img id="4" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/hectare_avg_species.png"></td>
+                                        <td><img id="5" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/hectare_avg_density.png"></td>
+                                        <td><img id="6" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/hectare_avg_biomass.png"></td>
+
+                                   </tr>
+                                   <tr>
+                                        <td>0_0</td>
+                                        <td>0.680141</td>
+                                        <td>8.175230</td>
+                                        <td>0.0</td>
+                                        <td>12.727001</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>8175.230026</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_1</td>
+                                        <td>0.894458</td>
+                                        <td>4.759812</td>
+                                        <td>0.0</td>
+                                        <td>10.108776</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>4759.811983</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_2</td>
+                                        <td>0.887023</td>
+                                        <td>2.569091</td>
+                                        <td>0.0</td>
+                                        <td>6.803606</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>2569.090575</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_3</td>
+                                        <td>0.877045</td>
+                                        <td>4.775129</td>
+                                        <td>0.0</td>
+                                        <td>10.274093</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>4775.128886</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_4</td>
+                                        <td>0.873718</td>
+                                        <td>4.284859</td>
+                                        <td>0.0</td>
+                                        <td>10.185003</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>4284.858704</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_5</td>
+                                        <td>0.879624</td>
+                                        <td>3.763138</td>
+                                        <td>0.0</td>
+                                        <td>7.367045</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>3763.137758</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_6</td>
+                                        <td>0.873434</td>
+                                        <td>3.079469</td>
+                                        <td>0.0</td>
+                                        <td>6.811739</td>
+                                        <td>mixed</td>
+                                        <td>dense</td>
+                                        <td>3079.468943</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_7</td>
+                                        <td>0.866729</td>
+                                        <td>4.193485</td>
+                                        <td>0.0</td>
+                                        <td>7.858070</td>
+                                        <td>mixed</td>
+                                        <td>dense</td>
+                                        <td>4193.484783</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_8</td>
+                                        <td>0.856265</td>
+                                        <td>4.344160</td>
+                                        <td>0.0</td>
+                                        <td>8.049333</td>
+                                        <td>mixed</td>
+                                        <td>dense</td>
+                                        <td>4344.159737</td>
+                                   </tr>
+                              </tbody>
+                         </table>
+                         <table id="treefera-data-acre" style="display: none;" class="dataframe">
+                              <thead id="table-head">
+                                   <tr>
+                                        <th>tile_id</th>
+                                        <th>avg_ndvi</th>
+                                        <th>avg_height</th>
+                                        <th>min_height</th>
+                                        <th>max_height</th>
+                                        <th>avg_species</th>
+                                        <th>avg_density</th>
+                                        <th>avg_biomass</th>
+                                   </tr>
+                              </thead>
+                              <tbody>
+                                   <tr>
+                                        <td></td>
+                                        <td><img id="a0" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/acre_avg_ndvi.png"></td>
+                                        <td><img id="a1" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/acre_avg_height.png"></td>
+                                        <td><img id="a2" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/acre_min_height.png"></td>
+                                        <td><img id="a3" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/acre_max_height.png"></td>
+                                        <td><img id="a4" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/acre_avg_species.png"></td>
+                                        <td><img id="a5" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/acre_avg_density.png"></td>
+                                        <td><img id="a6" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/acre_avg_biomass.png"></td>
+
+                                   </tr>
+                                   <tr>
+                                        <td>0_0</td>
+                                        <td>0.566875</td>
+                                        <td>6.545694</td>
+                                        <td>0.0</td>
+                                        <td>11.391875</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>2681.116333</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_1</td>
+                                        <td>0.894082</td>
+                                        <td>8.030814</td>
+                                        <td>0.0</td>
+                                        <td>12.543334</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>3289.421387</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_2</td>
+                                        <td>0.895481</td>
+                                        <td>5.260747</td>
+                                        <td>0.0</td>
+                                        <td>10.065193</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>2154.801941</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_3</td>
+                                        <td>0.881884</td>
+                                        <td>2.895200</td>
+                                        <td>0.0</td>
+                                        <td>5.834203</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>1185.873947</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_4</td>
+                                        <td>0.876548</td>
+                                        <td>2.983469</td>
+                                        <td>0.0</td>
+                                        <td>4.679505</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>1222.028885</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_5</td>
+                                        <td>0.868090</td>
+                                        <td>4.445661</td>
+                                        <td>0.0</td>
+                                        <td>6.120500</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>1820.942841</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_6</td>
+                                        <td>0.858335</td>
+                                        <td>3.320225</td>
+                                        <td>0.0</td>
+                                        <td>5.963496</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>1359.963989</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_7</td>
+                                        <td>0.871700</td>
+                                        <td>3.981218</td>
+                                        <td>0.0</td>
+                                        <td>6.856546</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>1630.706940</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_8</td>
+                                        <td>0.869545</td>
+                                        <td>2.715025</td>
+                                        <td>0.0</td>
+                                        <td>4.716945</td>
+                                        <td>mixed</td>
+                                        <td>dense</td>
+                                        <td>1112.074127</td>
+                                   </tr>
+                              </tbody>
+                         </table>
+                         <table id="treefera-data-quarter" style="display: none;" class="dataframe">
+                              <thead id="table-head">
+                                   <tr>
+                                        <th>tile_id</th>
+                                        <th>avg_ndvi</th>
+                                        <th>avg_height</th>
+                                        <th>min_height</th>
+                                        <th>max_height</th>
+                                        <th>avg_species</th>
+                                        <th>avg_density</th>
+                                        <th>avg_biomass</th>
+                                   </tr>
+                              </thead>
+                              <tbody>
+                                   <tr>
+                                        <td></td>
+                                        <td><img id="q0" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/quarter hectare_avg_ndvi.png"></td>
+                                        <td><img id="q1" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/quarter hectare_avg_height.png"></td>
+                                        <td><img id="q2" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/quarter hectare_min_height.png"></td>
+                                        <td><img id="q3" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/quarter hectare_max_height.png"></td>
+                                        <td><img id="q4" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/quarter hectare_avg_species.png"></td>
+                                        <td><img id="q5" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/quarter hectare_avg_density.png"></td>
+                                        <td><img id="q6" style="display: table;" class="histo-img"
+                                                  src="./histogram_images/quarter hectare_avg_biomass.png"></td>
+
+                                   </tr>
+                                   <tr>
+                                        <td>0_0</td>
+                                        <td>0.484669</td>
+                                        <td>5.760633</td>
+                                        <td>0.0</td>
+                                        <td>9.527966</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>1440.158207</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_1</td>
+                                        <td>0.893415</td>
+                                        <td>8.056601</td>
+                                        <td>0.0</td>
+                                        <td>12.146931</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>2014.150098</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_2</td>
+                                        <td>0.894953</td>
+                                        <td>6.849906</td>
+                                        <td>0.0</td>
+                                        <td>10.108776</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>1712.476648</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_3</td>
+                                        <td>0.892074</td>
+                                        <td>4.717220</td>
+                                        <td>0.0</td>
+                                        <td>8.931553</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>1179.305092</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_4</td>
+                                        <td>0.878138</td>
+                                        <td>2.917072</td>
+                                        <td>0.0</td>
+                                        <td>5.402591</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>729.267905</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_5</td>
+                                        <td>0.876406</td>
+                                        <td>2.811933</td>
+                                        <td>0.0</td>
+                                        <td>4.454026</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>702.983281</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_6</td>
+                                        <td>0.861093</td>
+                                        <td>3.786316</td>
+                                        <td>0.0</td>
+                                        <td>5.592696</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>946.579129</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_7</td>
+                                        <td>0.859040</td>
+                                        <td>4.281766</td>
+                                        <td>0.0</td>
+                                        <td>6.120500</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>1070.441585</td>
+                                   </tr>
+                                   <tr>
+                                        <td>0_8</td>
+                                        <td>0.844122</td>
+                                        <td>3.034471</td>
+                                        <td>0.0</td>
+                                        <td>5.564606</td>
+                                        <td>deciduous</td>
+                                        <td>dense</td>
+                                        <td>758.617884</td>
+                                   </tr>
+                              </tbody>
+                         </table>
+                    </div>
+                    <div id="validity-statement">
 
                     </div>
                </div>
 
           </div>
-
-          <!-- <tableau-viz id='tableau-viz-2'
-                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Height_Average_QUA_Dash'
-                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
-
-               <tableau-viz id='tableau-viz-3'
-                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Height_Min_HEC_Dash'
-                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
-
-               <tableau-viz id='tableau-viz-4'
-                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Height_Max_HEC_Dash'
-                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
-
-               <tableau-viz id='tableau-viz-5'
-                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Height_Max_QUA_Dash'
-                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
-
-               <tableau-viz id='tableau-viz-6'
-                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Species_HEC_Dash'
-                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
-
-               <tableau-viz id='tableau-viz-7'
-                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Species_QUA_Dash'
-                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
-
-               <tableau-viz id='tableau-viz-8'
-                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Density_HEC_Dash'
-                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
-
-               <tableau-viz id='tableau-viz-9'
-                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Density_QUA_Dash'
-                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
-
-               <tableau-viz id='tableau-viz-10'
-                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/NDVI_HEC_Dash' width="540"
-                    height="640" hide-tabs toolbar='hidden'></tableau-viz>
-
-               <tableau-viz id='tableau-viz-11'
-                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/NDVI_QUA_Dash' width="540"
-                    height="640" hide-tabs toolbar='hidden'></tableau-viz>
-
-               <tableau-viz id='tableau-viz-12'
-                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Biomass_HEC_Dash'
-                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
-
-               <tableau-viz id='tableau-viz-13'
-                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable/Biomass_QUA_Dash'
-                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz> -->
-
-     </div>
 </body>
 
 </html>
+<script>
+     const switchTable = () => {
+          const tableSelector = document.getElementById("table-selector");
+          const selectedTableId = tableSelector.value;
+
+          const hectare = document.getElementById("treefera-data-hectare");
+          const acre = document.getElementById("treefera-data-acre");
+          const quarter = document.getElementById("treefera-data-quarter");
+
+          // Images
+
+          const h0 = document.getElementById("0");
+          const h1 = document.getElementById("1");
+          const h2 = document.getElementById("2");
+          const h3 = document.getElementById("3");
+          const h4 = document.getElementById("4");
+          const h5 = document.getElementById("5");
+          const h6 = document.getElementById("6");
+
+          const a0 = document.getElementById("a0");
+          const a1 = document.getElementById("a1");
+          const a2 = document.getElementById("a2");
+          const a3 = document.getElementById("a3");
+          const a4 = document.getElementById("a4");
+          const a5 = document.getElementById("a5");
+          const a6 = document.getElementById("a6");
+
+          const q0 = document.getElementById("q0");
+          const q1 = document.getElementById("q1");
+          const q2 = document.getElementById("q2");
+          const q3 = document.getElementById("q3");
+          const q4 = document.getElementById("q4");
+          const q5 = document.getElementById("q5");
+          const q6 = document.getElementById("q6");
+
+
+
+          hectare.style.display = selectedTableId === "hectare" ? "table" : "none";
+
+          h0.style.display = selectedTableId === "hectare" ? "table" : "none";
+          h1.style.display = selectedTableId === "hectare" ? "table" : "none";
+          h2.style.display = selectedTableId === "hectare" ? "table" : "none";
+          h3.style.display = selectedTableId === "hectare" ? "table" : "none";
+          h4.style.display = selectedTableId === "hectare" ? "table" : "none";
+          h5.style.display = selectedTableId === "hectare" ? "table" : "none";
+          h6.style.display = selectedTableId === "hectare" ? "table" : "none";
+
+          acre.style.display = selectedTableId === "acre" ? "table" : "none";
+
+          a0.style.display = selectedTableId === "acre" ? "table" : "none";
+          a1.style.display = selectedTableId === "acre" ? "table" : "none";
+          a2.style.display = selectedTableId === "acre" ? "table" : "none";
+          a3.style.display = selectedTableId === "acre" ? "table" : "none";
+          a4.style.display = selectedTableId === "acre" ? "table" : "none";
+          a5.style.display = selectedTableId === "acre" ? "table" : "none";
+          a6.style.display = selectedTableId === "acre" ? "table" : "none";
+
+          quarter.style.display = selectedTableId === "quarter" ? "table" : "none";
+
+          q0.style.display = selectedTableId === "quarter" ? "table" : "none";
+          q1.style.display = selectedTableId === "quarter" ? "table" : "none";
+          q2.style.display = selectedTableId === "quarter" ? "table" : "none";
+          q3.style.display = selectedTableId === "quarter" ? "table" : "none";
+          q4.style.display = selectedTableId === "quarter" ? "table" : "none";
+          q5.style.display = selectedTableId === "quarter" ? "table" : "none";
+          q6.style.display = selectedTableId === "quarter" ? "table" : "none";
+
+
+     };
+
+     const tableSelector = document.getElementById("table-selector");
+     tableSelector.addEventListener("change", switchTable);
+</script>
