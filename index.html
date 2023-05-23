@@ -507,13 +507,15 @@
      const switchTable = () => {
           const tableSelector = document.getElementById("table-selector");
           const selectedTableId = tableSelector.value;
-          const selectedhref = csv_download.href;
 
           const hectare = document.getElementById("treefera-data-hectare");
           const acre = document.getElementById("treefera-data-acre");
           const quarter = document.getElementById("treefera-data-quarter");
           
           const csv_download = document.getElementById("csv-download");
+          const selectedhref = csv_download.href;
+
+          console.log(csv_download);
           // Images
 
           const h0 = document.getElementById("0");
