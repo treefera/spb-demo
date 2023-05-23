@@ -261,7 +261,7 @@ tableau-viz {
 
 @media screen and (max-width : 750px) {
     tableau-viz {
-        transform: scale(0.8);
+        transform: scale(0.85) !important;
     }
 
     #tableau-viz-center-sec {
@@ -269,7 +269,7 @@ tableau-viz {
     }
 
     .viz-info-container {
-        margin-top: 528px;
+        margin-top: 560px;
     }
 
     .brand-logo-container {
@@ -283,7 +283,7 @@ tableau-viz {
 
 @media screen and (max-width : 640px) {
     tableau-viz {
-        transform: scale(0.63);
+        transform: scale(0.65) !important;
     }
 
     #tableau-viz-center-sec {
@@ -291,7 +291,7 @@ tableau-viz {
     }
 
     .viz-info-container {
-        margin-top: 422px;
+        margin-top: 435px;
     }
 
     .brand-logo-container {

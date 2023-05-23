@@ -67,43 +67,43 @@
                               <div class="aggregate-stat">
                                    <img class="agg-imgs" src="./images/biomass.png">
 
-                                   <p>Total Biomass (Experimental)</p>
-                                   <p class="bold">9212007 t</p>
+                                   <p>Total Biomass</p>
+                                   <p class="bold">680,000 tonnes</p>
                               </div>
                               <div class="aggregate-stat">
                                    <img src="./images/density.png">
-                                   <p class="spaced-stat">Tree Density</p>
-                                   <p class="bold">16904033 units*</p>
+                                   <p>Tree Density</p>
+                                   <p class="bold">97 trees/hectare</p>
                               </div>
                               <div class="aggregate-stat">
                                    <img src="./images/health.png">
 
-                                   <p class="spaced-stat">Tree Health</p>
-                                   <p class="bold">3930500 units**</p>
+                                   <p>Tree Health</p>
+                                   <p class="bold">97%</p>
                               </div>
                               <div class="aggregate-stat">
                                    <img src="./images/count.png">
 
                                    <p class="spaced-stat">Total Tree Count</p>
-                                   <p class="aggregate-soon">Coming Soon!</p>
+                                   <p class="bold">805</p>
                               </div>
                               <div class="aggregate-stat">
                                    <img src="./images/CO2.png">
 
                                    <p>Annual Carbon Captured</p>
-                                   <p class="aggregate-soon">Coming Soon!</p>
+                                   <p class="aggregate-soon">TBD</p>
                               </div>
                          </div>
                          <div class="asterisk-container">
-                              <p>* Lorem ipsum lorem ipsum</p>
-                              <p>** Lorem ipsum lorem ipsum</p>
+                              <!-- <p>* Lorem ipsum lorem ipsum</p>
+                              <p>** Lorem ipsum lorem ipsum</p> -->
                          </div>
                     </div>
                </div>
                <div class="csv-preview-container">
-                    <h2 class="mini-title">Tile Data</h2>
+                    <h2 class="mini-title">Dataset</h2>
 
-                    Preview the full site dataset below or <a href="data.html">download the CSV</a>.
+                    Preview the full site dataset below or <a href="combined_hectare.csv">download the CSV</a>.
 
                     <br>
                     <br>
@@ -124,12 +124,12 @@
                               <thead id="table-head">
                                    <tr>
                                         <th>tile_id</th>
-                                        <th>avg_ndvi</th>
+                                        <th>avg_vegindex</th>
                                         <th>avg_height</th>
                                         <th>min_height</th>
                                         <th>max_height</th>
-                                        <th>avg_species</th>
-                                        <th>avg_density</th>
+                                        <th>species</th>
+                                        <th>density</th>
                                         <th>avg_biomass</th>
                                    </tr>
                               </thead>
@@ -160,7 +160,7 @@
                                         <td>12.727001</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>8175.230026</td>
+                                        <td>8,175.230026</td>
                                    </tr>
                                    <tr>
                                         <td>0_1</td>
@@ -170,7 +170,7 @@
                                         <td>10.108776</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>4759.811983</td>
+                                        <td>4,759.811983</td>
                                    </tr>
                                    <tr>
                                         <td>0_2</td>
@@ -180,7 +180,7 @@
                                         <td>6.803606</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>2569.090575</td>
+                                        <td>2,569.090575</td>
                                    </tr>
                                    <tr>
                                         <td>0_3</td>
@@ -190,7 +190,7 @@
                                         <td>10.274093</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>4775.128886</td>
+                                        <td>4,775.128886</td>
                                    </tr>
                                    <tr>
                                         <td>0_4</td>
@@ -200,7 +200,7 @@
                                         <td>10.185003</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>4284.858704</td>
+                                        <td>4,284.858704</td>
                                    </tr>
                                    <tr>
                                         <td>0_5</td>
@@ -210,7 +210,7 @@
                                         <td>7.367045</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>3763.137758</td>
+                                        <td>3,763.137758</td>
                                    </tr>
                                    <tr>
                                         <td>0_6</td>
@@ -220,7 +220,7 @@
                                         <td>6.811739</td>
                                         <td>mixed</td>
                                         <td>dense</td>
-                                        <td>3079.468943</td>
+                                        <td>3,079.468943</td>
                                    </tr>
                                    <tr>
                                         <td>0_7</td>
@@ -230,7 +230,7 @@
                                         <td>7.858070</td>
                                         <td>mixed</td>
                                         <td>dense</td>
-                                        <td>4193.484783</td>
+                                        <td>4,193.484783</td>
                                    </tr>
                                    <tr>
                                         <td>0_8</td>
@@ -240,7 +240,7 @@
                                         <td>8.049333</td>
                                         <td>mixed</td>
                                         <td>dense</td>
-                                        <td>4344.159737</td>
+                                        <td>4,344.159737</td>
                                    </tr>
                               </tbody>
                          </table>
@@ -248,12 +248,12 @@
                               <thead id="table-head">
                                    <tr>
                                         <th>tile_id</th>
-                                        <th>avg_ndvi</th>
+                                        <th>avg_vegindex</th>
                                         <th>avg_height</th>
                                         <th>min_height</th>
                                         <th>max_height</th>
-                                        <th>avg_species</th>
-                                        <th>avg_density</th>
+                                        <th>species</th>
+                                        <th>density</th>
                                         <th>avg_biomass</th>
                                    </tr>
                               </thead>
@@ -284,7 +284,7 @@
                                         <td>11.391875</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>2681.116333</td>
+                                        <td>2,681.116333</td>
                                    </tr>
                                    <tr>
                                         <td>0_1</td>
@@ -294,7 +294,7 @@
                                         <td>12.543334</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>3289.421387</td>
+                                        <td>3,289.421387</td>
                                    </tr>
                                    <tr>
                                         <td>0_2</td>
@@ -304,7 +304,7 @@
                                         <td>10.065193</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>2154.801941</td>
+                                        <td>2,154.801941</td>
                                    </tr>
                                    <tr>
                                         <td>0_3</td>
@@ -314,7 +314,7 @@
                                         <td>5.834203</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>1185.873947</td>
+                                        <td>1,185.873947</td>
                                    </tr>
                                    <tr>
                                         <td>0_4</td>
@@ -324,7 +324,7 @@
                                         <td>4.679505</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>1222.028885</td>
+                                        <td>1,222.028885</td>
                                    </tr>
                                    <tr>
                                         <td>0_5</td>
@@ -334,7 +334,7 @@
                                         <td>6.120500</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>1820.942841</td>
+                                        <td>1,820.942841</td>
                                    </tr>
                                    <tr>
                                         <td>0_6</td>
@@ -344,7 +344,7 @@
                                         <td>5.963496</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>1359.963989</td>
+                                        <td>1,359.963989</td>
                                    </tr>
                                    <tr>
                                         <td>0_7</td>
@@ -354,7 +354,7 @@
                                         <td>6.856546</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>1630.706940</td>
+                                        <td>1,630.706940</td>
                                    </tr>
                                    <tr>
                                         <td>0_8</td>
@@ -364,7 +364,7 @@
                                         <td>4.716945</td>
                                         <td>mixed</td>
                                         <td>dense</td>
-                                        <td>1112.074127</td>
+                                        <td>1,112.074127</td>
                                    </tr>
                               </tbody>
                          </table>
@@ -372,12 +372,12 @@
                               <thead id="table-head">
                                    <tr>
                                         <th>tile_id</th>
-                                        <th>avg_ndvi</th>
+                                        <th>avg_vegindex</th>
                                         <th>avg_height</th>
                                         <th>min_height</th>
                                         <th>max_height</th>
-                                        <th>avg_species</th>
-                                        <th>avg_density</th>
+                                        <th>species</th>
+                                        <th>density</th>
                                         <th>avg_biomass</th>
                                    </tr>
                               </thead>
@@ -408,7 +408,7 @@
                                         <td>9.527966</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>1440.158207</td>
+                                        <td>1,440.158207</td>
                                    </tr>
                                    <tr>
                                         <td>0_1</td>
@@ -418,7 +418,7 @@
                                         <td>12.146931</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>2014.150098</td>
+                                        <td>2,014.150098</td>
                                    </tr>
                                    <tr>
                                         <td>0_2</td>
@@ -428,7 +428,7 @@
                                         <td>10.108776</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>1712.476648</td>
+                                        <td>1,712.476648</td>
                                    </tr>
                                    <tr>
                                         <td>0_3</td>
@@ -438,7 +438,7 @@
                                         <td>8.931553</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>1179.305092</td>
+                                        <td>1,179.305092</td>
                                    </tr>
                                    <tr>
                                         <td>0_4</td>
@@ -478,7 +478,7 @@
                                         <td>6.120500</td>
                                         <td>deciduous</td>
                                         <td>dense</td>
-                                        <td>1070.441585</td>
+                                        <td>1,070.441585</td>
                                    </tr>
                                    <tr>
                                         <td>0_8</td>
