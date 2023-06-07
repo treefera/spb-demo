@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <link rel="stylesheet" href="style.css" />
+     <link rel="stylesheet" href="table.css" />
+     <title>Cultreevate | Data Delivery </title>
+
+</head>
+
+<body>
+     <div class="body-container">
+          <div class="navbar">
+               <div class="brand-logo-container">
+                    <a href="https://www.treefera.com/"><img class="brand-logo" src="logo.webp"></a>
+               </div>
+               <p class="navbar-title">Cultreevate | Data Delivery </p>
+          </div>
+          <div class="content-container">
+               <p class="eye-grabber">Hi, Your data for <span class="bold">Cloptovia, South West Romania</span> is
+                    ready.
+               </p>
+               <p class="top-title">Site Report</p>
+               <p><img src="./images/pin.png"
+                         style="vertical-align: middle; width: 25px; height: 25px; margin-right: 2px"> Quebec,
+                    <span style="margin-right: 4px" class="bold">Canada</span> | <span style="margin-left: 4px"
+                         class="small">Last updated: 2023-06-07</span>
+               </p>
+               <div class="site-info-container">
+                    <div class="stat-container">
+                         <img src="./images/property_details.png">
+                         <p><span class="bold">Site Area:</span> 9.2 km<sup>2</sup></p>
+                    </div>
+                    <div class="stat-container">
+                         <img src="./images/blob_details.png">
+                         <p style="margin-right: 15px"><span class="bold">Image Source:</span> Airbus</p>
+
+                         <img src="./images/blob_details.png">
+                         <p><span class="bold">Image Date: 2021-10-21</span></p>
+                    </div>
+                    <div class="stat-container">
+                         <img src="./images/blob_details.png">
+                         <p><span class="bold">AI Reference:</span> LCM / RetinaNet</p>
+                    </div>
+               </div>
+               <div class="map-view-link" onclick="location.href='cultreevate_data.html'">
+                    <img class="map-view-symbol" src="./images/latlong.png">
+                    <p>
+                         <span class="bold"> Detailed Site View</span>
+                         <br>
+                         Latitude: 46.855424, Longitude: -75.365153
+                    </p>
+                    <img class="map-view-chevron" src="images/cheveron.png"></img>
+               </div>
+               <div class="aggregate-statistics-big-container">
+
+                    <p class="mini-title">Site Summary</p>
+                    <div class="aggregate-statistics-container">
+                         <div class="aggregate-statistics-section">
+                              <div class="aggregate-stat">
+                                   <img class="agg-imgs" src="./images/biomass.png">
+
+                                   <p>Total Biomass</p>
+                                   <p class="bold">680K tonnes</p>
+                              </div>
+                              <div class="aggregate-stat">
+                                   <img src="./images/density.png">
+                                   <p>Tree Density</p>
+                                   <p class="bold">97 trees/hectare</p>
+                              </div>
+                              <div class="aggregate-stat">
+                                   <img src="./images/health.png">
+
+                                   <p>Tree Health</p>
+                                   <p class="bold">97%</p>
+                              </div>
+                              <div class="aggregate-stat">
+                                   <img src="./images/count.png">
+
+                                   <p>Estimated Tree Count</p>
+                                   <p class="bold">805</p>
+                              </div>
+                              <div class="aggregate-stat">
+                                   <img src="./images/CO2.png">
+
+                                   <p>Annual Carbon Captured</p>
+                                   <p class="aggregate-soon">TBD</p>
+                              </div>
+                         </div>
+                         <div class="asterisk-container">
+                              <!-- <p>* Lorem ipsum lorem ipsum</p>
+                              <p>** Lorem ipsum lorem ipsum</p> -->
+                         </div>
+                    </div>
+               </div>
+               <div class="csv-preview-container">
+                    <h2 class="mini-title">Dataset</h2>
+
+                    Preview the full site dataset below or <a href="romania_combined_hectare.csv">download the CSV</a>.
+
+                    <br>
+                    <br>
+                    <div class="selector-container">
+
+                         <p>Tile Size:</p>
+
+                         <select id="table-selector">
+                              <option value="hectare">Hectare</option>
+                              <option value="quarter">Quarter-Hectare</option>
+                         </select>
+
+                    </div>
+
+                    <div class="table-display">
+                         <table id="treefera-data-hectare" style="display: table;" class="dataframe">
+                              <thead id="table-head">
+                                <tr>
+                                  <th>tile_id</th>
+                                  <th>avg_ndvi</th>
+                                  <th>avg_height</th>
+                                  <th>min_height</th>
+                                  <th>max_height</th>
+                                  <th>avg_species</th>
+                                  <th>avg_density</th>
+                                  <th>avg_biomass</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>0_0</td>
+                                  <td>0.0</td>
+                                  <td>0.001762</td>
+                                  <td>0.0</td>
+                                  <td>0.537548</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>5000.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_1</td>
+                                  <td>0.0</td>
+                                  <td>0.278501</td>
+                                  <td>0.0</td>
+                                  <td>4.659373</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>5000.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_2</td>
+                                  <td>0.0</td>
+                                  <td>0.062614</td>
+                                  <td>0.0</td>
+                                  <td>1.609891</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>5000.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_3</td>
+                                  <td>0.0</td>
+                                  <td>0.124188</td>
+                                  <td>0.0</td>
+                                  <td>2.420346</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>5000.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_4</td>
+                                  <td>0.0</td>
+                                  <td>0.156621</td>
+                                  <td>0.0</td>
+                                  <td>2.645140</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>5000.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_5</td>
+                                  <td>0.0</td>
+                                  <td>4.142543</td>
+                                  <td>0.0</td>
+                                  <td>13.564758</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>5000.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_6</td>
+                                  <td>0.0</td>
+                                  <td>3.901712</td>
+                                  <td>0.0</td>
+                                  <td>12.768603</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>5000.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_7</td>
+                                  <td>0.0</td>
+                                  <td>0.273404</td>
+                                  <td>0.0</td>
+                                  <td>4.041991</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>5000.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_8</td>
+                                  <td>0.0</td>
+                                  <td>0.018721</td>
+                                  <td>0.0</td>
+                                  <td>1.696840</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>5000.0</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                         
+                         <table id="treefera-data-quarter" style="display: none;" class="dataframe">
+                              <thead id="table-head">
+                                <tr style="text-align: right;">
+                                  <th>tile_id</th>
+                                  <th>avg_ndvi</th>
+                                  <th>avg_height</th>
+                                  <th>min_height</th>
+                                  <th>max_height</th>
+                                  <th>avg_species</th>
+                                  <th>avg_density</th>
+                                  <th>avg_biomass</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td></td>
+                                  <td><img id="q0" style="display: table;" class="histo-img"
+                                            src="./histogram_images/quarter hectare_avg_ndvi.png"></td>
+                                  <td><img id="q1" style="display: table;" class="histo-img"
+                                            src="./histogram_images/quarter hectare_avg_height.png"></td>
+                                  <td><img id="q2" style="display: table;" class="histo-img"
+                                            src="./histogram_images/quarter hectare_min_height.png"></td>
+                                  <td><img id="q3" style="display: table;" class="histo-img"
+                                            src="./histogram_images/quarter hectare_max_height.png"></td>
+                                  <td><img id="q4" style="display: table;" class="histo-img"
+                                            src="./histogram_images/quarter hectare_avg_species.png"></td>
+                                  <td><img id="q5" style="display: table;" class="histo-img"
+                                            src="./histogram_images/quarter hectare_avg_density.png"></td>
+                                  <td><img id="q6" style="display: table;" class="histo-img"
+                                            src="./histogram_images/quarter hectare_avg_biomass.png"></td>
+                            
+                             </tr>
+                                <tr>
+                                  <td>0_0</td>
+                                  <td>0.0</td>
+                                  <td>0.000000</td>
+                                  <td>0.0</td>
+                                  <td>0.000000</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>1250.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_1</td>
+                                  <td>0.0</td>
+                                  <td>0.000000</td>
+                                  <td>0.0</td>
+                                  <td>0.000000</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>1250.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_2</td>
+                                  <td>0.0</td>
+                                  <td>0.102189</td>
+                                  <td>0.0</td>
+                                  <td>1.261999</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>1250.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_3</td>
+                                  <td>0.0</td>
+                                  <td>0.130426</td>
+                                  <td>0.0</td>
+                                  <td>1.244164</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>1250.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_4</td>
+                                  <td>0.0</td>
+                                  <td>0.034738</td>
+                                  <td>0.0</td>
+                                  <td>0.704460</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>1250.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_5</td>
+                                  <td>0.0</td>
+                                  <td>0.000000</td>
+                                  <td>0.0</td>
+                                  <td>0.000000</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>1250.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_6</td>
+                                  <td>0.0</td>
+                                  <td>0.053620</td>
+                                  <td>0.0</td>
+                                  <td>0.773224</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>1250.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_7</td>
+                                  <td>0.0</td>
+                                  <td>0.290429</td>
+                                  <td>0.0</td>
+                                  <td>2.420346</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>1250.0</td>
+                                </tr>
+                                <tr>
+                                  <td>0_8</td>
+                                  <td>0.0</td>
+                                  <td>0.188573</td>
+                                  <td>0.0</td>
+                                  <td>1.985221</td>
+                                  <td>deciduous</td>
+                                  <td>sparse</td>
+                                  <td>1250.0</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                    </div>
+                    <div id="validity-statement">
+
+                    </div>
+               </div>
+
+          </div>
+</body>
+
+</html>
+<script>
+     const switchTable = () => {
+          const tableSelector = document.getElementById("table-selector");
+          const selectedTableId = tableSelector.value;
+
+          const hectare = document.getElementById("treefera-data-hectare");
+          const quarter = document.getElementById("treefera-data-quarter");
+
+          // Images
+
+          const h0 = document.getElementById("0");
+          const h1 = document.getElementById("1");
+          const h2 = document.getElementById("2");
+          const h3 = document.getElementById("3");
+          const h4 = document.getElementById("4");
+          const h5 = document.getElementById("5");
+          const h6 = document.getElementById("6");
+
+
+
+          const q0 = document.getElementById("q0");
+          const q1 = document.getElementById("q1");
+          const q2 = document.getElementById("q2");
+          const q3 = document.getElementById("q3");
+          const q4 = document.getElementById("q4");
+          const q5 = document.getElementById("q5");
+          const q6 = document.getElementById("q6");
+
+
+
+          hectare.style.display = selectedTableId === "hectare" ? "table" : "none";
+
+          h0.style.display = selectedTableId === "hectare" ? "table" : "none";
+          h1.style.display = selectedTableId === "hectare" ? "table" : "none";
+          h2.style.display = selectedTableId === "hectare" ? "table" : "none";
+          h3.style.display = selectedTableId === "hectare" ? "table" : "none";
+          h4.style.display = selectedTableId === "hectare" ? "table" : "none";
+          h5.style.display = selectedTableId === "hectare" ? "table" : "none";
+          h6.style.display = selectedTableId === "hectare" ? "table" : "none";
+
+
+          quarter.style.display = selectedTableId === "quarter" ? "table" : "none";
+
+          q0.style.display = selectedTableId === "quarter" ? "table" : "none";
+          q1.style.display = selectedTableId === "quarter" ? "table" : "none";
+          q2.style.display = selectedTableId === "quarter" ? "table" : "none";
+          q3.style.display = selectedTableId === "quarter" ? "table" : "none";
+          q4.style.display = selectedTableId === "quarter" ? "table" : "none";
+          q5.style.display = selectedTableId === "quarter" ? "table" : "none";
+          q6.style.display = selectedTableId === "quarter" ? "table" : "none";
+
+
+     };
+
+     const tableSelector = document.getElementById("table-selector");
+     tableSelector.addEventListener("change", switchTable);
+</script>

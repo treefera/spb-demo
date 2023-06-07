@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <script type='module'
+          src='https://prod-uk-a.online.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js'></script>
+
+     <link rel="stylesheet" href="style.css" />
+     <title>Cultreevate | Data Delivery </title>
+</head>
+
+<body onload="pageLoadHandler()">
+
+     <script>
+
+          let res = 'HEC';
+
+          const vizInfo = {
+               "Height_Average_HEC_Dash": ["Average Tree Height Per Hectare", "Canopy height above ground level, with mean taken over 1 hectare tiles.", "Average canopy height is approximate and may be influenced by the presence of other (non-natural) objects. Height is derived from the NEXTMap Digital Terrain Model and NEXTMap Digital Surface Model at 10 x 10 m resolution and averaged to 1-hectare resolution.", "average-height-button", "https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Height_Average_HEC_Dash"],
+
+               "Height_Min_HEC_Dash": ["Minimum Tree Height Per Hectare", "Canopy height above ground level, with minimum taken over 1 hectare tiles.",
+                    "Minimum canopy height is approximate and may be influenced by the presence of other (non-natural) objects. Height is derived from the NEXTMap Digital Terrain Model and NEXTMap Digital Surface Model at 10 x 10 m resolution and averaged to 1-hectare resolution.",
+                    "minimum-height-button", "https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Height_Min_HEC_Dash"],
+
+               "Height_Max_HEC_Dash": [
+                    "Maximum Tree Height Per Hectare",
+                    "Canopy height above ground level, with maximum taken over 1 hectare tiles.",
+                    "Maximum canopy height is approximate and may be influenced by the presence of other (non-natural) objects. Height is derived from the NEXTMap Digital Terrain Model and NEXTMap Digital Surface Model at 10 x 10 m resolution and averaged to 1-hectare resolution.",
+                    "maximum-height-button",
+                    "https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Height_Max_HEC_Dash"],
+
+               "Species_HEC_Dash": [
+                    "Tree Species Description Per Hectare",
+                    "Tree species classification for each 1 hectare tile.",
+                    "'Species' is used as a general term to categorise the various species of trees on the site. Species labels are generated from the treefera Land Cover Model (LCM), an AI model trained on 50cm Pléiades satellite images of Quebec from 8th October 2021. Species inference is subject to error.",
+                    "species-button",
+                    "https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Species_HEC_Dash"],
+
+               "Density_HEC_Dash": [
+                    "Tree Density Per Hectare",
+                    "Tree density classification for each 1 hectare tile.",
+                    "Density is an approximation of the discrete tree frequency within a specific area and geographical location. Density labels are generated from the Land Cover Model (LCM) which is an AI model, trained on 50cm Pléiades satellite images of Quebec from 8th October 2021. Please be aware that the density labels are an approximation of the actual number of trees per unit area.",
+                    "density-button",
+                    "https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Density_HEC_Dash"],
+
+               "NDVI_HEC_Dash": [
+                    "Average Vegetation Index Per Hectare",
+                    "Vegetation index, with mean taken over 1 hectare tiles.",
+                    "Average vegetation quantifies the difference between how much vegetation reflects near-infrared (NIR) and absorbs red light bands. This involves analytic NIR and RGB images taken from 50cm Pléiades satellite images of Quebec from 8th October 2021.",
+                    "vegetation-button",
+                    "https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/NDVI_HEC_Dash"],
+
+               "Biomass_HEC_Dash": [
+                    "Tree Biomass Per Hectare",
+                    "Total biomass of trees in 1 hectare tiles.",
+                    "Biomass is derived from the existing average height and density data, calculated using an approximation of the specifc biomass formula used within a specific geographical location, averaged to 1-hectare resolution. Please be aware that this does not reflect the actual average biomass values per unit area, due to the approximations of height and density values.",
+                    "biomass-button",
+                    "https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Biomass_HEC_Dash"],
+          };
+
+          function loadViz(vizName) {
+
+               const vizArray = vizInfo[vizName];
+
+               if (res == 'HEC') {
+                    document.getElementById("tableau-viz").src = vizArray[4];
+                    document.getElementById("viz-name").textContent = vizArray[0];
+                    document.getElementById("viz-description").textContent = vizArray[1];
+               }
+               else if (res == 'QUA') {
+                    document.getElementById("tableau-viz").src = vizArray[4].replace("HEC", "QUA");
+                    document.getElementById("viz-name").textContent = vizArray[0].replace("Hectare", "Quarter-Hectare");
+                    document.getElementById("viz-description").textContent = vizArray[1].replace("hectare", "quarter-hectare");;
+               }
+       
+
+               // document.getElementById("viz-about").textContent = vizArray[2];
+
+               const activeButtonList = document.getElementsByClassName("active");
+
+               if (activeButtonList.length !== 0) {
+                    activeButtonList[0].className = '';
+               }
+
+               document.getElementById(vizArray[3]).className = 'active';
+
+          }
+
+          function changeRes() {
+
+               const tileSelector = document.getElementById("tile-selector");
+               const selectedTileRes = tileSelector.value;
+
+               res = selectedTileRes;
+
+               const fullDict = {'HEC': ' Hectare', 'QUA': ' Quarter-Hectare'};
+
+               document.getElementById("tableau-viz").src = document.getElementById("tableau-viz").src.replace("HEC", res).replace("QUA", res);
+               document.getElementById("viz-name").textContent = document.getElementById("viz-name").textContent.replace(" Hectare", fullDict[res]).replace(" Quarter-Hectare", fullDict[res]);
+
+               document.getElementById("viz-description").textContent = document.getElementById("viz-description").textContent.replace(" hectare", fullDict[res].toLowerCase()).replace(" quarter-hectare", fullDict[res].toLowerCase());
+
+          }
+
+          function pageLoadHandler() {
+               loadViz("Height_Average_HEC_Dash");
+          }
+     </script>
+
+     <!--TODO 
+     
+     1) Placement of buttons
+     2) Fix layouts
+     3) Tableau width & height
+     4) histograms
+     5) table switch out
+     6) Fix other annoying styling
+     7) 
+     
+     -->
+
+     <div class="body-container">
+          <div class="navbar">
+               <div class="brand-logo-container">
+                    <a href="https://www.treefera.com/"><img class="brand-logo" src="logo.webp"></a>
+               </div>
+               <p class="navbar-title">Cultreevate | Data Delivery </p>
+          </div>
+          <div class="content-container">
+               <a href="cultreevate_view.html" class="back-link"> &lt; Back to Site Report</a>
+               <p class="top-title2">Detailed Site View</p>
+               <p>Explore below to gain insights from tree species, height, density and more.</p>
+               <p class="italic">Your site is highlighted in white on the map.</p>
+               <div class="selector-container" style="margin-bottom: 25px;">
+
+                    <p>Tile Size:</p>
+
+                    <select id="tile-selector" onchange="changeRes()">
+                         <option value="HEC">Hectare</option>
+                         <option value="QUA">Quarter-Hectare</option>
+                    </select>
+
+               </div>
+               <p id="viz-name" class="mini-title">Loading...</p>
+               <p id="viz-description" class="viz-info-text">Loading...</p>
+               <div id="tableau-viz-center-sec">
+                    <tableau-viz id="tableau-viz" padding="10px auto" width="640" text-align="center" height="640" style="transform:scale(1.03)"
+                         hide-tabs toolbar='hidden'></tableau-viz>
+               </div>
+
+               <div class="viz-info-container">
+
+                    <div class="see-more-container">
+
+                         <div class="button-collection">
+                              <a id="average-height-button" href="#"
+                                   onclick="loadViz('Height_Average_HEC_Dash'); event.preventDefault();">Average
+                                   Height</a>
+                              <a id="minimum-height-button" href="#"
+                                   onclick="loadViz('Height_Min_HEC_Dash'); event.preventDefault();">Minimum Height</a>
+                              <a id="maximum-height-button" href="#"
+                                   onclick="loadViz('Height_Max_HEC_Dash'); event.preventDefault();">Maximum Height</a>
+                         </div>
+                         <div class="button-collection">
+                              <a id="species-button" href="#"
+                                   onclick="loadViz('Species_HEC_Dash'); event.preventDefault();">Species</a>
+                              <a id="density-button" href="#"
+                                   onclick="loadViz('Density_HEC_Dash'); event.preventDefault();">Density</a>
+                              <a id="vegetation-button" href="#"
+                                   onclick="loadViz('NDVI_HEC_Dash'); event.preventDefault();">Vegetation Index</a>
+                              <a id="biomass-button" href="#"
+                                   onclick="loadViz('Biomass_HEC_Dash'); event.preventDefault();">Biomass</a>
+                         </div>
+
+                         <!-- <div class="res-button-container">
+                              <a id="change-res-button" href="#" onclick="changeRes(); event.preventDefault();">Change
+                                   Resolution</a>
+                         </div> -->
+
+                         <p style="margin-top: 32px" class="viz-info-text"><span class="bold">Explore The Data</span>
+                         </p>
+                         <ul style="margin-bottom: 18px" class="viz-info-text">
+                              <li>Hover over a tile for more information.</li>
+                              <li>Use the scroll wheel to zoom the map.</li>
+                              <li>Click and drag to move the map.</li>
+                              <li>Use the Home button to reset the map view.</li>
+                         </ul>
+                         <!-- <p class="viz-info-text"><span class="bold">About The Data (Hectare Resolution)</span></p>
+                         <p id="viz-about" class="viz-info-text small">Loading...</p> -->
+
+                    </div>
+               </div>
+
+          </div>
+
+
+
+          <!-- <tableau-viz id='tableau-viz-2'
+                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Height_Average_QUA_Dash'
+                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
+
+               <tableau-viz id='tableau-viz-3'
+                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Height_Min_HEC_Dash'
+                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
+
+               <tableau-viz id='tableau-viz-4'
+                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Height_Max_HEC_Dash'
+                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
+
+               <tableau-viz id='tableau-viz-5'
+                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Height_Max_QUA_Dash'
+                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
+
+               <tableau-viz id='tableau-viz-6'
+                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Species_HEC_Dash'
+                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
+
+               <tableau-viz id='tableau-viz-7'
+                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Species_QUA_Dash'
+                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
+
+               <tableau-viz id='tableau-viz-8'
+                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Density_HEC_Dash'
+                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
+
+               <tableau-viz id='tableau-viz-9'
+                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Density_QUA_Dash'
+                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
+
+               <tableau-viz id='tableau-viz-10'
+                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/NDVI_HEC_Dash' width="540"
+                    height="640" hide-tabs toolbar='hidden'></tableau-viz>
+
+               <tableau-viz id='tableau-viz-11'
+                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/NDVI_QUA_Dash' width="540"
+                    height="640" hide-tabs toolbar='hidden'></tableau-viz>
+
+               <tableau-viz id='tableau-viz-12'
+                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Biomass_HEC_Dash'
+                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz>
+
+               <tableau-viz id='tableau-viz-13'
+                    src='https://prod-uk-a.online.tableau.com/t/treefera/views/SPB_Web_Dashes_Zoomable_New2/Biomass_QUA_Dash'
+                    width="540" height="640" hide-tabs toolbar='hidden'></tableau-viz> -->
+
+     </div>
+</body>
+
+</html>
