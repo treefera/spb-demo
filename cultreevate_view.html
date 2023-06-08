@@ -32,7 +32,7 @@
                <p><img src="./images/pin.png"
                          style="vertical-align: middle; width: 25px; height: 25px; margin-right: 2px"> Clopotiva,
                     <span style="margin-right: 4px" class="bold">Romania</span> | <span style="margin-left: 4px"
-                         class="small">Last updated: 2023-06-07</span>
+                         class="small">Last updated: 2023-06-08</span>
                </p>
                <div class="site-info-container">
                     <div class="stat-container">
@@ -44,7 +44,7 @@
                          <p style="margin-right: 15px"><span class="bold">Image Source:</span> Airbus</p>
 
                          <img src="./images/blob_details.png">
-                         <p><span class="bold">Image Date: 2021-10-21</span></p>
+                         <p><span>Image Date: 2021-10-21</span></p>
                     </div>
                     <div class="stat-container">
                          <img src="./images/blob_details.png">
@@ -56,7 +56,7 @@
                     <p>
                          <span class="bold"> Detailed Site View</span>
                          <br>
-                         Latitude: 45.334551, Longitude: 22.708402
+                         <strong>Latitude: 45.334551, Longitude: 22.708402</strong>
                     </p>
                     <img class="map-view-chevron" src="images/cheveron.png"></img>
                </div>
@@ -104,7 +104,7 @@
                <div class="csv-preview-container">
                     <h2 class="mini-title">Dataset</h2>
 
-                    Preview the full site dataset below or <a href="romania_combined_hectare.csv">download the CSV</a>.
+                    Preview the full site dataset below or <a id="table-link" href="romania_combined_hectare.csv">download the CSV</a>.
 
                     <br>
                     <br>
@@ -383,6 +383,8 @@
      const switchTable = () => {
           const tableSelector = document.getElementById("table-selector");
           const selectedTableId = tableSelector.value;
+          
+          const tableLink = document.getElementById("table-link");
 
           const hectare = document.getElementById("treefera-data-hectare");
           const quarter = document.getElementById("treefera-data-quarter");
@@ -407,7 +409,7 @@
           const q5 = document.getElementById("q5");
           const q6 = document.getElementById("q6");
 
-
+          
 
           hectare.style.display = selectedTableId === "hectare" ? "table" : "none";
 
@@ -430,7 +432,7 @@
           q5.style.display = selectedTableId === "quarter" ? "table" : "none";
           q6.style.display = selectedTableId === "quarter" ? "table" : "none";
 
-
+          tableLink.href = selectedTableId === "hectare" ? "romania_combined_hectare.csv" : "romania_combined_quarter_hectare.csv";
      };
 
      const tableSelector = document.getElementById("table-selector");
