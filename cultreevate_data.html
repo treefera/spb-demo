@@ -39,14 +39,14 @@
                "Species_Hec_Dash": [
                     "Tree Species Description Per Hectare",
                     "Tree species classification for each 1 hectare tile.",
-                    "'Species' is used as a general term to categorise the various species of trees on the site. Species labels broadly describe the general species of trees per hectare as: Deciduous, Coniferous or Mixed. Species labels are generated from the treefera Land Cover Model (LCM), an AI model trained on 50cm Pléiades satellite images of Clopotiva from 21st October 2021.",
+                    "'Species' is used as a general term to categorise the various species of trees on the site. Species labels broadly describe the general species of trees. Species labels are generated from the treefera Land Cover Model (LCM), an AI model trained on 50cm Pléiades satellite images of Clopotiva from 21st October 2021.",
                     "species-button",
                     "https://prod-uk-a.online.tableau.com/t/treefera/views/Cultreevate_Map_Views/Species_Hec_Dash"],
 
                "Density_Hec_Dash": [
                     "Tree Density Per Hectare",
                     "Tree density classification for each 1 hectare tile.",
-                    "Density is an approximation of the discrete tree frequency within a specific area and geographical location. Density labels are classified as the estimated number of trees per hectare: Dense ~ 2500 trees, Sparse ~ 500 trees, Urban ~ 20 trees.  These labels are generated from the Land Cover Model (LCM) which is an AI model, trained on 50cm Pléiades satellite images of Clopotiva from 21st October 2021.",
+                    "Density is an approximation of the discrete tree frequency within a specific area and geographical location. Density labels are classified as the estimated number of trees per area.  These labels are generated from the Land Cover Model (LCM) which is an AI model, trained on 50cm Pléiades satellite images of Clopotiva from 21st October 2021.",
                     "density-button",
                     "https://prod-uk-a.online.tableau.com/t/treefera/views/Cultreevate_Map_Views/Density_Hec_Dash"],
 
@@ -60,7 +60,7 @@
                "Biomass_Hec_Dash": [
                     "Tree Biomass Per Hectare",
                     "Total biomass of trees in 1 hectare tiles.",
-                    "Biomass is derived from the existing average height and density data, calculated using an approximation of the specifc biomass formula used within a specific geographical location, averaged to 1-hectare resolution. The formula for calculating biomass values is an approximation based on the average density and assumed average biomass of a single tree.",
+                    "Biomass is derived from the existing average height and density data, calculated using an approximation of the specifc biomass formula used within a specific geographical location. The formula for calculating biomass values is an approximation based on the average density and assumed average biomass of a single tree.",
                     "biomass-button",
                     "https://prod-uk-a.online.tableau.com/t/treefera/views/Cultreevate_Map_Views/Biomass_Hec_Dash"],
           };
@@ -77,7 +77,7 @@
                else if (res == 'QHec') {
                     document.getElementById("tableau-viz").src = vizArray[4].replace("Hec", "QHec");
                     document.getElementById("viz-name").textContent = vizArray[0].replace("Hectare", "Quarter-Hectare");
-                    document.getElementById("viz-description").textContent = vizArray[1].replace("hectare", "quarter-hectare");;
+                    document.getElementById("viz-description").textContent = vizArray[1].replace("hectare", "quarter-hectare");
                }
        
 
@@ -125,7 +125,7 @@
                <a href="cultreevate_view.html" class="back-link"> &lt; Back to Site Report</a>
                <p class="top-title2">Detailed Site View</p>
                <p>Explore below to gain insights from tree species, height, density and more.</p>
-               <p class="italic">Your ground truth points are highlighted in black on the map, excluding two sample points in Pui which are out of range</p>
+               <p class="italic">Your ground truth sites are the dots highlighted in black on the map, excluding two ground truth sites in Pui which are out of range.</p>
                <div class="selector-container" style="margin-bottom: 25px;">
 
                     <p>Tile Size:</p>
