@@ -68,20 +68,28 @@
           function loadViz(vizName) {
 
                const vizArray = vizInfo[vizName];
+               document.getElementById("viz-about").textContent = vizArray[2];
 
                if (res == 'Hec') {
                     document.getElementById("tableau-viz").src = vizArray[4];
                     document.getElementById("viz-name").textContent = vizArray[0];
                     document.getElementById("viz-description").textContent = vizArray[1];
+                    document.getElementById("viz-about").textContent = vizArray[2];
+
+               
                }
                else if (res == 'QHec') {
                     document.getElementById("tableau-viz").src = vizArray[4].replace("Hec", "QHec");
                     document.getElementById("viz-name").textContent = vizArray[0].replace("Hectare", "Quarter-Hectare");
                     document.getElementById("viz-description").textContent = vizArray[1].replace("hectare", "quarter-hectare");
+                    document.getElementById("viz-about").textContent = vizArray[2].replace("hectare", "quarter-hectare");
+
                }
        
 
-               document.getElementById("viz-about").textContent = vizArray[2];
+               
+               
+               
 
                const activeButtonList = document.getElementsByClassName("active");
 
